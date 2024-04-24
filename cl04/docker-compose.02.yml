@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  nginx:
+    image: nginx
+    volumes:
+      #- nginx-data:/usr/share/nginx/html
+      - ./nginx-data/:/usr/share/nginx/html
+    ports:
+      - 8081:80
+
+volumes:
+  nginx-data:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=192.168.87.190,nolock,soft,rw
+      device: ":${PWD}/nginx-data"

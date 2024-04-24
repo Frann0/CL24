@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx-data/:/usr/share/nginx/html
+    ports:
+      - 8081:80
+    networks:
+      - vandcykel
+
+networks:
+  vandcykel:
